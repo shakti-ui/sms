@@ -1,6 +1,5 @@
 package com.sms.io.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,26 +18,30 @@ public class StudentService {
 	@Autowired
 	StudentRepository studentRepository;
 
-	public void save(StudentDTO studentDTO) {
-		Student student = new Student();
-		BeanUtils.copyProperties(studentDTO, student);
+//	public void save(StudentDTO studentDTO) {
+//		Student student = new Student();
+//		BeanUtils.copyProperties(studentDTO, student);
+//
+//		studentRepository.save(student);
+//
+//	}
 
-		System.out.println(student);
-		studentRepository.save(student);
+	public List<Student> getAll() {
+		return (List<Student>) studentRepository.findAll();
 
 	}
 
-	public List<StudentDTO> getAll() {
-		List<StudentDTO> studentDTOs = new ArrayList<StudentDTO>();
-		List<Student> students = studentRepository.findAll();
-		System.out.println(students);
-		for (Student student : students) {
-			StudentDTO studentDTO = new StudentDTO();
-			BeanUtils.copyProperties(student, studentDTO);
-			studentDTOs.add(studentDTO);
-		}
-		return studentDTOs;
-	}
+//	public List<StudentDTO> getAll() {
+//		List<StudentDTO> studentDTOs = new ArrayList<StudentDTO>();
+//		List<Student> students = studentRepository.findAll();
+//		System.out.println(students);
+//		for (Student student : students) {
+//			StudentDTO studentDTO = new StudentDTO();
+//			BeanUtils.copyProperties(student, studentDTO);
+//			studentDTOs.add(studentDTO);
+//		}
+//		return studentDTOs;
+//	}
 
 	public StudentDTO findById(Integer studentId) {
 		Optional<Student> optional = studentRepository.findById(studentId);
@@ -71,6 +74,12 @@ public class StudentService {
 		optional.setFirstName(studentDTO.getFirstName());
 
 		studentRepository.save(optional);
+
+	}
+
+	public void save(Student student) {
+		studentRepository.save(student);
+		// TODO Auto-generated method stub
 
 	}
 
