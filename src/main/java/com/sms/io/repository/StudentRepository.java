@@ -1,5 +1,7 @@
 package com.sms.io.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -12,5 +14,7 @@ import com.sms.io.model.Student;
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 	ResponseEntity<AppResponse> save(StudentDTO studentDTO);
+
+	Optional<Student> findById(int studentId);
 
 }

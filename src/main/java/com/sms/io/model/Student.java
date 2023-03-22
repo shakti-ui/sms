@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer sid;
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -21,12 +21,26 @@ public class Student {
 	private Date dob;
 	private String email;
 
-	public Integer getSid() {
-		return sid;
+	public Student() {
+
 	}
 
-	public void setSid(Integer sid) {
-		this.sid = sid;
+	public Student(String firstName, String lastName, String address, String phoneNumber, Date dob, String email) {
+
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.dob = dob;
+		this.email = email;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -75,6 +89,12 @@ public class Student {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ ", phoneNumber=" + phoneNumber + ", dob=" + dob + ", email=" + email + "]";
 	}
 
 }
